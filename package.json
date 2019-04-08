@@ -1,0 +1,19 @@
+{
+  "name": "web-spider-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "spider.js",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "mkdir": "^0.0.2",
+    "path": "^0.12.7",
+    "request": "^2.88.0",
+    "utilities": "^1.0.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Priyanka",
+  "license": "ISC"
+}
