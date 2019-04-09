@@ -1,6 +1,8 @@
 function urlToFilename(url) {
 
-    console.log(url);
+    const res = url.replace(/[^\w\s]/gi, '');
+    console.log("res----", res)
+    return res
 }
 
 module.exports = {
