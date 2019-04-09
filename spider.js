@@ -20,7 +20,7 @@ function spider(url, callback) {
                             callback(err)
                         }
                         else{
-                            fs.writeFileSync(`${path.resolve(__dirname)}/${filename}.js`, "hellloooo", err => {
+                            fs.writeFileSync(dirName, "body", err => {
                                 if(err) {
                                     callback(err)
                                 }else {
