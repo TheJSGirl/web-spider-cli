@@ -1,7 +1,8 @@
-function urlToFilename(url) {
+var url = require('url');
+function urlToFilename(webUrl) {
 
-    const res = url.replace(/[^\w\s]/gi, '');
-    return res
+const slug = url.parse(webUrl);
+    return slug.hostname;
 }
 
 module.exports = {
