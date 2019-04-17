@@ -6,7 +6,6 @@ const fs = require('fs');
 
 function spider(url, callback) {
     const filename = utilities.urlToFilename(url);
-    console.log(filename)
     fs.exists(filename, exists => {
         if(!exists) {
             request(url, (err, response, body) => {
@@ -14,19 +13,18 @@ function spider(url, callback) {
                     callback(err)
                 }
                 else {
-                   const dirName = `${path.resolve(__dirname)}/${filename}`;
+                   const dirName = path.resolve(__dirname, filename);
                     mkdir.mkdirsSync(dirName, err => {
                         if(err) {
                             callback(err)
                         }
-                        else{
-                            fs.writeFileSync(dirName, "body", err => {
-                                if(err) {
-                                    callback(err)
-                                }else {
-                                    callback(null, filename, true);
-                                }
-                            })
+                    })
+
+                    fs.writeFileSync(`${dirName}/${filename}.html`, body, err => {
+                        if(err) {
+                            callback(err)
+                        }else {
+                            callback(null, filename, true);
                         }
                     })
                 }
@@ -46,5 +44,5 @@ function mycallback (err, filename, downloaded) {
     console.log(`"${filename}" was already downloaded`);
     }
     }
-
+    
 spider(process.argv[2], mycallback);
