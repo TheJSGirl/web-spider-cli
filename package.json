@@ -5,6 +5,7 @@
   "main": "spider.js",
   "dependencies": {
     "fs": "0.0.1-security",
+    "live-server": "^1.2.1",
     "mkdir": "^0.0.2",
     "path": "^0.12.7",
     "request": "^2.88.0",
