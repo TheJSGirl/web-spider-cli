@@ -4,6 +4,14 @@ const path = require("path");
 const utilities = require("./utilities");
 const fs = require("fs");
 
+function createParentDir(parentDirName) {
+  mkdir.mkdirsSync(parentDirName, err => {
+    if (err) {
+      return;
+    }
+  });
+}
+
 function spider(url, callback) {
   const filename = utilities.urlToFilename(url);
   fs.exists(filename, exists => {
@@ -13,11 +21,11 @@ function spider(url, callback) {
           callback(err);
         } else {
           const parentDirName = path.resolve(__dirname, "downloads");
-          mkdir.mkdirsSync(parentDirName, err => {
-            if (err) {
-              return;
-            }
-          });
+          const dir = fs.existsSync(parentDirName);
+          if (!dir) {
+            createParentDir(parentDirName);
+          }
+
           mkdir.mkdirsSync(`${parentDirName}/${filename}`, err => {
             if (err) {
               callback(err);
